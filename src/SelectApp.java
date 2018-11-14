@@ -8,7 +8,7 @@ public class SelectApp {
      */
     private Connection connect() {
         // SQLite connection string
-        String url = "jdbc:sqlite:C://sqlite/db/test.db";
+        String url = "jdbc:sqlite:C://Documents/sqlite/lp_iem_sig.sqlite";
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(url);
