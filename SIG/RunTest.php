@@ -1,19 +1,37 @@
 <?php
-  DEFINE('DB_USERNAME', 'root');
+  /*DEFINE('DB_USERNAME', 'root');
   DEFINE('DB_PASSWORD', 'root');
   DEFINE('DB_HOST', 'localhost');
-  DEFINE('DB_DATABASE', 'SIG');
+  DEFINE('DB_DATABASE', 'magiccard');
 
   $mysqli = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 
   if (mysqli_connect_error()) {
     die('Connect Error ('.mysqli_connect_errno().') '.mysqli_connect_error());
   }
-
+  var_dump($mysqli);
   echo 'Connected successfully.';
+  $request = "SELECT * FROM `card`";
+  var_dump( mysql_query($mysqli,$request) );
+  $mysqli->close();*/
 
-  $mysqli->close();
+  try
 
+{
+
+    $bdd = new PDO('mysql:host=localhost;dbname=SIG;charset=utf8', 'root', 'root');
+	$reponse = $bdd->query('SELECT * FROM `GEO_ARC`');
+	$donnees = $reponse->fetch();
+	var_dump($donnees);
+}
+
+catch (Exception $e)
+
+{
+
+        die('Erreur : ' . $e->getMessage());
+
+}
 
 /*
  * Author: doug@neverfear.org
