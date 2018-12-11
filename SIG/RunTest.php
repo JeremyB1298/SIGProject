@@ -1,12 +1,12 @@
 <?php
 require("Dijkstra.php");
 require("GeoArc.php");
-
+require("Data.php");
   try
 
 {
 
-    $bdd = new PDO('mysql:host=localhost;dbname=SIG;charset=utf8', 'root', 'root');
+    /*$bdd = new PDO('mysql:host=localhost;dbname=SIG;charset=utf8', 'root', 'root');
 	$reponse = $bdd->query('SELECT * FROM `GEO_ARC`');
 	$tableauGeoArc = array();
 	while ($donnees = $reponse->fetch()) {
@@ -17,7 +17,12 @@ require("GeoArc.php");
 	foreach ($tableauGeoArc as $geoArc) {
 		var_dump($geoArc);
 		echo '<br>';
-	}
+	}*/
+
+	$data = new Data();
+	$tab = $data->getGeoArcTab();
+	var_dump($tab);
+	$tab2 = $data->getGeoPointTab();
 
 }
 
