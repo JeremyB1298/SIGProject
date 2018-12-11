@@ -24,6 +24,8 @@ require("Data.php");
  */
 
 function runTest() {
+
+
 	$g = new Graph();
 	$g->addedge("a", "b", 4);
 	$g->addedge("a", "d", 1);
