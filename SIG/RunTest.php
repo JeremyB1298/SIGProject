@@ -1,19 +1,6 @@
 <?php
-  /*DEFINE('DB_USERNAME', 'root');
-  DEFINE('DB_PASSWORD', 'root');
-  DEFINE('DB_HOST', 'localhost');
-  DEFINE('DB_DATABASE', 'magiccard');
-
-  $mysqli = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
-
-  if (mysqli_connect_error()) {
-    die('Connect Error ('.mysqli_connect_errno().') '.mysqli_connect_error());
-  }
-  var_dump($mysqli);
-  echo 'Connected successfully.';
-  $request = "SELECT * FROM `card`";
-  var_dump( mysql_query($mysqli,$request) );
-  $mysqli->close();*/
+require("Dijkstra.php");
+require("GeoArc.php");
 
   try
 
@@ -21,8 +8,17 @@
 
     $bdd = new PDO('mysql:host=localhost;dbname=SIG;charset=utf8', 'root', 'root');
 	$reponse = $bdd->query('SELECT * FROM `GEO_ARC`');
-	$donnees = $reponse->fetch();
-	var_dump($donnees);
+	$tableauGeoArc = array();
+	while ($donnees = $reponse->fetch()) {
+		array_push($tableauGeoArc, new GeoArc($donnees['GEO_ARC_ID'], $donnees['GEO_ARC_DEB'], $donnees['GEO_ARC_FIN'], $donnees['GEO_ARC_TEMPS'], $donnees['GEO_ARC_DISTANCE'], $donnees['GEO_ARC_SENS']));    
+		echo '<br>';		
+	}
+	$reponse->closeCursor();
+	foreach ($tableauGeoArc as $geoArc) {
+		var_dump($geoArc);
+		echo '<br>';
+	}
+
 }
 
 catch (Exception $e)
@@ -36,8 +32,6 @@ catch (Exception $e)
 /*
  * Author: doug@neverfear.org
  */
-
-require("Dijkstra.php");
 
 function runTest() {
 	$g = new Graph();
