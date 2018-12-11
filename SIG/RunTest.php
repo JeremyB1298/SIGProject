@@ -1,10 +1,27 @@
 <?php
+require("Dijkstra.php");
+require("GeoArc.php");
+require("GeoPoint.php");
+require("Data.php");
+
+
+	$data = new Data();
+	$tabGeoArc = $data->getGeoArcTab();
+	var_dump($tabGeoArc);
+	echo'<br>';
+	echo'<br>';
+	echo'<br>';
+	echo'<br>';
+	echo'<br>';
+	echo'<br>';
+	echo'<br>';
+	echo'<br>';
+	echo'<br>';
+	$tabGeoPoint = $data->getGeoPointTab();
+	var_dump($tabGeoPoint);
 /*
  * Author: doug@neverfear.org
  */
-
-require("Dijkstra.php");
-require("DataBase.php");
 
 function runTest() {
 
