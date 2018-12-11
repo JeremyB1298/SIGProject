@@ -1,39 +1,24 @@
 <?php
 require("Dijkstra.php");
 require("GeoArc.php");
+require("GeoPoint.php");
 require("Data.php");
-  try
 
-{
-
-    /*$bdd = new PDO('mysql:host=localhost;dbname=SIG;charset=utf8', 'root', 'root');
-	$reponse = $bdd->query('SELECT * FROM `GEO_ARC`');
-	$tableauGeoArc = array();
-	while ($donnees = $reponse->fetch()) {
-		array_push($tableauGeoArc, new GeoArc($donnees['GEO_ARC_ID'], $donnees['GEO_ARC_DEB'], $donnees['GEO_ARC_FIN'], $donnees['GEO_ARC_TEMPS'], $donnees['GEO_ARC_DISTANCE'], $donnees['GEO_ARC_SENS']));    
-		echo '<br>';		
-	}
-	$reponse->closeCursor();
-	foreach ($tableauGeoArc as $geoArc) {
-		var_dump($geoArc);
-		echo '<br>';
-	}*/
 
 	$data = new Data();
-	$tab = $data->getGeoArcTab();
-	var_dump($tab);
-	$tab2 = $data->getGeoPointTab();
-
-}
-
-catch (Exception $e)
-
-{
-
-        die('Erreur : ' . $e->getMessage());
-
-}
-
+	$tabGeoArc = $data->getGeoArcTab();
+	var_dump($tabGeoArc);
+	echo'<br>';
+	echo'<br>';
+	echo'<br>';
+	echo'<br>';
+	echo'<br>';
+	echo'<br>';
+	echo'<br>';
+	echo'<br>';
+	echo'<br>';
+	$tabGeoPoint = $data->getGeoPointTab();
+	var_dump($tabGeoPoint);
 /*
  * Author: doug@neverfear.org
  */
