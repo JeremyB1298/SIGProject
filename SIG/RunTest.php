@@ -4,6 +4,7 @@ require("GeoArc.php");
 require("GeoPoint.php");
 require("Data.php");
 require("InitDistance.php");
+require("Distance.php");
 
 	$data = new Data();
 	$tabGeoArc = $data->getGeoArcTab();
@@ -18,8 +19,11 @@ require("InitDistance.php");
 	echo'<br>';
 	echo'<br>';
 	$tabGeoPoint = $data->getGeoPointTab();
-	echo'distance';
-	var_dump($tabGeoArc->distanceTo(14.55,14.55,15.55,15.55,"M"));
+	$distance = new Distance();
+	echo('function : ');
+	var_dump($distance->getDistance(17.888, 17.999, 16.222, 16.888));
+	
+    
 	//var_dump($tabGeoPoint);
 /*
  * Author: doug@neverfear.org
