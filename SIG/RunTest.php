@@ -18,6 +18,8 @@ require("InitDistance.php");
 	echo'<br>';
 	echo'<br>';
 	$tabGeoPoint = $data->getGeoPointTab();
+	echo'distance';
+	var_dump($tabGeoArc->distanceTo(14.55,14.55,15.55,15.55,"M"));
 	//var_dump($tabGeoPoint);
 /*
  * Author: doug@neverfear.org
