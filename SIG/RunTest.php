@@ -20,8 +20,14 @@ require("Distance.php");
 	echo'<br>';
 	$tabGeoPoint = $data->getGeoPointTab();
 	$distance = new Distance();
-	echo('function : ');
-	var_dump($distance->getDistance(17.888, 17.999, 16.222, 16.888));
+	/*echo('function : ');
+	var_dump($distance->getDistance(17.888, 17.999, 16.222, 16.888));*/
+
+	foreach ($tabGeoArc as $key) {
+		$fin = $data->getGeoPointById($key->getGeoArcFin());
+		$deb = $data->getGeoPointById($key->getGeoArcDeb());
+		echo'<br>';
+	}
 	
     
 	//var_dump($tabGeoPoint);

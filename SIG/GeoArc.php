@@ -19,9 +19,12 @@ class GeoArc {
         $this->geo_arc_sens = $geo_arc_sens;
     }
     
-    public function getGeoArcId() {
-        return $this->geo_arc_id;
+    public function getGeoArcDeb() {
+        return $this->geo_arc_deb;
     }  
 
+    public function getGeoArcFin() {
+        return $this->geo_arc_fin;
+    }  
 }
 ?>

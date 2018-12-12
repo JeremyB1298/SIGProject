@@ -24,6 +24,13 @@
         public function getGeoPointTab() {
             $bdd = new PDO('mysql:host=localhost;dbname=sigComplet;charset=utf8', 'root', 'root');
             $reponse = $bdd->query('SELECT * FROM `GEO_POINT`');
+
+            return $reponse->fetch();
+        }
+
+        public function getGeoPointById($id) {
+            $bdd = new PDO('mysql:host=localhost;dbname=sigComplet;charset=utf8', 'root', 'root');
+            $reponse = $bdd->query('SELECT * FROM `GEO_POINT` WHERE GEO_POI_ID = ' . $id);
             $tableauGeoPoint = array();
             while ($donnees = $reponse->fetch()) {
                 //var_dump($donnees['GEO_POI_NOM']);
