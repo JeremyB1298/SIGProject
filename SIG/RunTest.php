@@ -3,11 +3,11 @@ require("Dijkstra.php");
 require("GeoArc.php");
 require("GeoPoint.php");
 require("Data.php");
-
+require("InitDistance.php");
 
 	$data = new Data();
 	$tabGeoArc = $data->getGeoArcTab();
-	var_dump($tabGeoArc);
+	//var_dump($tabGeoArc);
 	echo'<br>';
 	echo'<br>';
 	echo'<br>';
@@ -18,7 +18,7 @@ require("Data.php");
 	echo'<br>';
 	echo'<br>';
 	$tabGeoPoint = $data->getGeoPointTab();
-	var_dump($tabGeoPoint);
+	//var_dump($tabGeoPoint);
 /*
  * Author: doug@neverfear.org
  */
