@@ -10,10 +10,7 @@
     echo "Echec lors de la connexion à MySQL : (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 }
 
-  echo 'Connected successfully.<br>';
-
   var_dump($res = $mysqli->query('SELECT * FROM GEO_ARC'));
-  echo "<br>";
   $mysqli->close();
 
 ?>

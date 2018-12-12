@@ -6,30 +6,7 @@ require("Data.php");
 require("InitDistance.php");
 require("Distance.php");
 
-	$data = new Data();
-	$tabGeoArc = $data->getGeoArcTab();
-	//var_dump($tabGeoArc);
-	echo'<br>';
-	echo'<br>';
-	echo'<br>';
-	echo'<br>';
-	echo'<br>';
-	echo'<br>';
-	echo'<br>';
-	echo'<br>';
-	echo'<br>';
-	$tabGeoPoint = $data->getGeoPointTab();
-	$distance = new Distance();
-	/*echo('function : ');
-	var_dump($distance->getDistance(17.888, 17.999, 16.222, 16.888));*/
-
-	foreach ($tabGeoArc as $key) {
-		$fin = $data->getGeoPointById($key->getGeoArcFin());
-		$deb = $data->getGeoPointById($key->getGeoArcDeb());
-		echo'<br>';
-	}
-	
-    
+	    
 	//var_dump($tabGeoPoint);
 /*
  * Author: doug@neverfear.org
@@ -38,44 +15,28 @@ require("Distance.php");
 function runTest() {
 
 
+	$data = new Data();
+	$tabGeoArc = $data->getGeoArcTab();
+
+	$tabGeoPoint = $data->getGeoPointTab();
+	$distance = new Distance();
+
+	foreach ($tabGeoArc as $key) {
+		$fin = $data->getGeoPointById($key->getGeoArcFin());
+		$deb = $data->getGeoPointById($key->getGeoArcDeb());
+		if($fin[0]->getPartition() == 1 && $deb[0]->getPartition() == 1)
+		$key->setDistance($distance->getDistance($deb[0]->getLat(), $fin[0]->getLat(), $deb[0]->getLong(), $fin[0]->getLong()));
+	}
+
 	$g = new Graph();
-	$g->addedge("a", "b", 4);
-	$g->addedge("a", "d", 1);
-
-	$g->addedge("b", "a", 74);
-	$g->addedge("b", "c", 2);
-	$g->addedge("b", "e", 12);
-
-	$g->addedge("c", "b", 12);
-	$g->addedge("c", "j", 12);
-	$g->addedge("c", "f", 74);
-
-	$g->addedge("d", "g", 22);
-	$g->addedge("d", "e", 32);
-
-	$g->addedge("e", "h", 33);
-	$g->addedge("e", "d", 66);
-	$g->addedge("e", "f", 76);
-
-	$g->addedge("f", "j", 21);
-	$g->addedge("f", "i", 11);
-
-	$g->addedge("g", "c", 12);
-	$g->addedge("g", "h", 10);
-
-	$g->addedge("h", "g", 2);
-	$g->addedge("h", "i", 72);
-
-	$g->addedge("i", "j", 7);
-	$g->addedge("i", "f", 31);
-	$g->addedge("i", "h", 18);
-
-	$g->addedge("j", "f", 8);
-
-
-	list($distances, $prev) = $g->paths_from("a");
+	foreach ($tabGeoArc as $key) {
+		$fin = $data->getGeoPointById($key->getGeoArcFin());
+		$deb = $data->getGeoPointById($key->getGeoArcDeb());
+		$g->addedge($deb[0]->getName(), $fin[0]->getName(), $key->getDistance());
+	}
+	list($distances, $prev) = $g->paths_from("Revermont");
 	
-	$path = $g->paths_to($prev, "i");
+	$path = $g->paths_to($prev, "Verlaine");
 	
 	print_r($path);
 	

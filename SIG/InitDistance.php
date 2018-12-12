@@ -29,6 +29,6 @@ $c=(($gN1*cos($phi1))/$n)*exp($n*$gl1);//ok
 $ys=$y0+$c*exp(-1*$n*$gl0);          
 $x93=$x0+$c*exp(-1*$n*$gl)*sin($n*($l-$lc));     
 $y93=$ys-$c*exp(-1*$n*$gl)*cos($n*($l-$lc));
-echo('latitude' . $x93);
-echo('longitude' . $y93);
+//echo('latitude' . $x93);
+//echo('longitude' . $y93);
 ?>

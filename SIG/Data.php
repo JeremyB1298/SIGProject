@@ -34,7 +34,7 @@
             $tableauGeoPoint = array();
             while ($donnees = $reponse->fetch()) {
                 //var_dump($donnees['GEO_POI_NOM']);
-                array_push($tableauGeoPoint, new GeoPoint($donnees['GEO_POI_ID'], $donnees['GEO_POI_LATITUDE'], $donnees['GEO_POI_LONGITUDE'], $donnees['GEO_POI_NOM'], $donnees['GEO_ARC_PARTITION']));   	
+                array_push($tableauGeoPoint, new GeoPoint($donnees['GEO_POI_ID'], $donnees['GEO_POI_LATITUDE'], $donnees['GEO_POI_LONGITUDE'], $donnees['GEO_POI_NOM'], $donnees['GEO_POI_PARTITION']));   	
             }
             $reponse->closeCursor();
             return $tableauGeoPoint;

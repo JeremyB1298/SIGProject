@@ -26,5 +26,14 @@ class GeoArc {
     public function getGeoArcFin() {
         return $this->geo_arc_fin;
     }  
+
+    public function setDistance($distance) {
+
+       $this->geo_arc_distance = $distance;
+    }
+
+    public function getDistance() {
+        return $this->geo_arc_distance;
+    }
 }
 ?>
