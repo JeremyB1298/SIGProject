@@ -33,6 +33,18 @@
             return $tableauGeoPoint;
         }
 
+        public function getGeoPointByUniqueName(){
+            $bdd = new PDO('mysql:host=localhost;dbname=sigComplet;charset=utf8', 'root', 'root');
+            $reponse = $bdd->query('SELECT DISTINCT `GEO_POI_NOM` FROM `GEO_POINT`');
+            $tableauGeoPoint = array();
+            while ($donnees = $reponse->fetch()) {
+                //var_dump($donnees['GEO_POI_NOM']);
+                array_push($tableauGeoPoint, $donnees['GEO_POI_NOM']);   	
+            }
+            $reponse->closeCursor();
+            return $tableauGeoPoint;
+        }
+
         public function getGeoPointById($id) {
             $bdd = new PDO('mysql:host=localhost;dbname=sigComplet;charset=utf8', 'root', 'root');
             $reponse = $bdd->query('SELECT * FROM `GEO_POINT` WHERE GEO_POI_ID = ' . $id);
