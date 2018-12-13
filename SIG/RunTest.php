@@ -65,6 +65,16 @@ echo('<?xml version="1.0" encoding="utf-8"?>');
   </Icon>
   </IconStyle>
   </Style>";
+  echo "<Style id=\"trajet\">
+  <LineStyle>
+  <color>0000ff</color>
+  <width>4</width>
+  </LineStyle>
+  <PolyStyle>
+  <color>ff0000</color>
+  <width>20</width>
+  </PolyStyle>
+  </Style>";
  
 require("Dijkstra.php");
 require("GeoArc.php");
@@ -137,7 +147,9 @@ function runTest() {
 			}
 		}
 	}
-	/*echo"<Placemark> 
+	echo"<Placemark> 
+				<name>Trajet</name>
+				<styleUrl>#trajet</styleUrl>
 				<LineString>
 				 <coordinates>";
 				 foreach ($tabPointChemin as $key) {
@@ -145,7 +157,7 @@ function runTest() {
 				 }
 				 echo"</coordinates>
 				</LineString>
-				</Placemark>";*/
+				</Placemark>";
 }
 		runTest();
 		
