@@ -19,9 +19,21 @@ class GeoArc {
         $this->geo_arc_sens = $geo_arc_sens;
     }
     
-    public function getGeoArcId() {
-        return $this->geo_arc_id;
+    public function getGeoArcDeb() {
+        return $this->geo_arc_deb;
+    }  
+
+    public function getGeoArcFin() {
+        return $this->geo_arc_fin;
+    }  
+
+    public function setDistance($distance) {
+
+       $this->geo_arc_distance = $distance;
     }
 
+    public function getDistance() {
+        return $this->geo_arc_distance;
+    }
 }
 ?>

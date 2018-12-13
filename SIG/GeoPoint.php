@@ -17,6 +17,24 @@
             $this->geo_poi_partition = $geo_poi_partition;
         }
 
-    }
+        public function getLat() {
+            return $this->geo_poi_latitude;
+        }
 
+        public function getId() {
+            return $this->geo_poi_id;
+        }
+    
+        public function getLong() {
+            return $this->geo_poi_longitude;
+        }
+
+        public function getName() {
+            return $this->geo_poi_nom;
+        }
+
+        public function getPartition() {
+            return $this->geo_poi_partition;
+        }
+    }
 ?>
