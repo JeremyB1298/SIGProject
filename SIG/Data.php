@@ -24,8 +24,13 @@
         public function getGeoPointTab() {
             $bdd = new PDO('mysql:host=localhost;dbname=sigComplet;charset=utf8', 'root', 'root');
             $reponse = $bdd->query('SELECT * FROM `GEO_POINT`');
-
-            return $reponse->fetch();
+            $tableauGeoPoint = array();
+            while ($donnees = $reponse->fetch()) {
+                //var_dump($donnees['GEO_POI_NOM']);
+                array_push($tableauGeoPoint, new GeoPoint($donnees['GEO_POI_ID'], $donnees['GEO_POI_LATITUDE'], $donnees['GEO_POI_LONGITUDE'], $donnees['GEO_POI_NOM'], $donnees['GEO_POI_PARTITION']));   	
+            }
+            $reponse->closeCursor();
+            return $tableauGeoPoint;
         }
 
         public function getGeoPointById($id) {
@@ -38,6 +43,18 @@
             }
             $reponse->closeCursor();
             return $tableauGeoPoint;
+        }
+
+        public function getTabPoint($arrayTitle) {
+            $bdd = new PDO('mysql:host=localhost;dbname=sigComplet;charset=utf8', 'root', 'root');
+            $arrayPoint = array();
+            foreach ($arrayTitle as $key) {
+                $reponse = $bdd->query('SELECT * FROM `GEO_POINT` WHERE GEO_POI_NOM = "' . $key . '"');
+                $donnees = $reponse->fetch();
+                array_push($arrayPoint, new GeoPoint($donnees['GEO_POI_ID'], $donnees['GEO_POI_LATITUDE'], $donnees['GEO_POI_LONGITUDE'], $donnees['GEO_POI_NOM'], $donnees['GEO_POI_PARTITION']));   	
+            }
+            $reponse->closeCursor();
+            return $arrayPoint;
         }
 
     }
