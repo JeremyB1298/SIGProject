@@ -7,7 +7,7 @@ class Distance {
 
     }
 
-    public function getDistance($lat1, $lat2, $lon1, $lon2) {
+    /*public function getDistance($lat1, $lat2, $lon1, $lon2) {
 
         $unit = 'M';
             
@@ -29,6 +29,34 @@ class Distance {
             if ($unit == "N") { $dist = $dist * 0.8684; }
 
             return $dist;
+    }*/
+
+    public function getDistance($lat1, $lat2, $long1, $long2) {
+
+        $n = 0.7289686274;
+        $C = 11745793.39;
+        $e = 0.08248325676;
+        $Xs = 600000;
+        $Ys = 8199695.768;
+
+        
+        $GAMMA0 = (3600*2) + (60*20) + 14.025;
+        $GAMMA0 = $GAMMA0/(180*3600)*pi();
+        $lat = floatval($_POST['lat'])/(180*3600)*pi();
+        $long = floatval($_POST['long'])/(180*3600)*pi();
+        $L = 0.5*log((1+sin($lat))/(1-sin($lat)))-$e/2*log((1+$e*sin($lat))/(1-$e*sin($lat)));
+        $R = $C*exp((-$n)*$L);
+        
+        $GAMMA = $n*($long-$GAMMA0);
+        
+        $Long2 = $long2+($R*sin($GAMMA));
+        $Lat2 = $lat2-($R*cos($GAMMA));
+
+        $Long1 = $long1+($R*sin($GAMMA));
+        $Lat1 = $lat1-($R*cos($GAMMA));
+
+        return sqrt(pow(($Lat1 - $Lat2),2) + pow(($Long1 - $Long2),2));
+
     }
 }
 ?>
