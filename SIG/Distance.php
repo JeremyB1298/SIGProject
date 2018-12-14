@@ -42,21 +42,29 @@ class Distance {
         
         $GAMMA0 = (3600*2) + (60*20) + 14.025;
         $GAMMA0 = $GAMMA0/(180*3600)*pi();
-        $lat = floatval($_POST['lat'])/(180*3600)*pi();
-        $long = floatval($_POST['long'])/(180*3600)*pi();
+        $lat = floatval($lat1)/(180*3600)*pi();
+        $long = floatval($long1)/(180*3600)*pi();
         $L = 0.5*log((1+sin($lat))/(1-sin($lat)))-$e/2*log((1+$e*sin($lat))/(1-$e*sin($lat)));
         $R = $C*exp((-$n)*$L);
         
         $GAMMA = $n*($long-$GAMMA0);
         
-        $Long2 = $long2+($R*sin($GAMMA));
-        $Lat2 = $lat2-($R*cos($GAMMA));
+        $Long1 = $Xs+($R*sin($GAMMA));
+        $Lat1 = $Ys-($R*cos($GAMMA));
 
-        $Long1 = $long1+($R*sin($GAMMA));
-        $Lat1 = $lat1-($R*cos($GAMMA));
+        $GAMMA0 = (3600*2) + (60*20) + 14.025;
+        $GAMMA0 = $GAMMA0/(180*3600)*pi();
+        $lat = floatval($lat2)/(180*3600)*pi();
+        $long = floatval($long2)/(180*3600)*pi();
+        $L = 0.5*log((1+sin($lat))/(1-sin($lat)))-$e/2*log((1+$e*sin($lat))/(1-$e*sin($lat)));
+        $R = $C*exp((-$n)*$L);
+        
+        $GAMMA = $n*($long-$GAMMA0);
+        
+        $Long2 = $Xs+($R*sin($GAMMA));
+        $Lat2 = $Ys-($R*cos($GAMMA));
 
-        return sqrt(pow(($Lat1 - $Lat2),2) + pow(($Long1 - $Long2),2));
-
+        return sqrt( pow( ($Lat1 - $Lat2) ,2) + pow( ($Long1 - $Long2) ,2) );
     }
 }
 ?>
