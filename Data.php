@@ -22,7 +22,7 @@
         }
 
         public function getGeoPointTab() {
-            $bdd = new PDO('mysql:host=http://17ruecroixberthet.freeboxos.fr;dbname=sigComplet;charset=utf8', 'root', 'sCr7GD47x6');
+            $bdd = new PDO('mysql:host=127.0.0.1;dbname=sigComplet;charset=utf8', 'root', 'sCr7GD47x6');
             $reponse = $bdd->query('SELECT * FROM `GEO_POINT`');
             $tableauGeoPoint = array();
             while ($donnees = $reponse->fetch()) {
@@ -34,7 +34,7 @@
         }
 
         public function getGeoPointByUniqueName(){
-            $bdd = new PDO('mysql:host=http://17ruecroixberthet.freeboxos.fr;dbname=sigComplet;charset=utf8', 'root', 'sCr7GD47x6');
+            $bdd = new PDO('mysql:host=127.0.0.1;dbname=sigComplet;charset=utf8', 'root', 'sCr7GD47x6');
             $reponse = $bdd->query('SELECT DISTINCT `GEO_POI_NOM` FROM `GEO_POINT`');
             $tableauGeoPoint = array();
             while ($donnees = $reponse->fetch()) {
@@ -46,7 +46,7 @@
         }
 
         public function getGeoPointById($id) {
-            $bdd = new PDO('mysql:host=http://17ruecroixberthet.freeboxos.fr;dbname=sigComplet;charset=utf8', 'root', 'sCr7GD47x6');
+            $bdd = new PDO('mysql:host=127.0.0.1;dbname=sigComplet;charset=utf8', 'root', 'sCr7GD47x6');
             $reponse = $bdd->query('SELECT * FROM `GEO_POINT` WHERE GEO_POI_ID = ' . $id);
             $tableauGeoPoint = array();
             while ($donnees = $reponse->fetch()) {
@@ -58,7 +58,7 @@
         }
 
         public function getTabPoint($arrayTitle) {
-            $bdd = new PDO('mysql:host=http://17ruecroixberthet.freeboxos.fr;dbname=sigComplet;charset=utf8', 'root', 'sCr7GD47x6');
+            $bdd = new PDO('mysql:host=127.0.0.1;dbname=sigComplet;charset=utf8', 'root', 'sCr7GD47x6');
             $arrayPoint = array();
             foreach ($arrayTitle as $key) {
                 $reponse = $bdd->query('SELECT * FROM `GEO_POINT` WHERE GEO_POI_NOM = "' . $key . '"');
