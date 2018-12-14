@@ -161,6 +161,7 @@ function runTest() {
 				
 						
 }
+      runTest();
 
 
 		

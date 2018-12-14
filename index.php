@@ -73,7 +73,7 @@ input[type=submit] {
 <p>Entrez votre point de départ et d'arrivée</p>
 
 <!--Make sure the form has the autocomplete function switched off:-->
-<form autocomplete="off" action="Main.php">
+<form autocomplete="off" action="RunTest.php">
   <div class="autocomplete" style="width:300px;">
     <input id="startPt" type="text" name="a" placeholder="Point de départ">
     <input id="endPt" type="text" name="b" placeholder="Point d'arrivée'">
