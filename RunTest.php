@@ -158,9 +158,17 @@ function runTest() {
 				 echo"</coordinates>
 				</LineString>
 				</Placemark>";
+				
+						
 }
-		runTest();
+
+
+		
+		
+		
+		
 		
 		?>
 	</Document>
-</kml> 
+</kml>
+
